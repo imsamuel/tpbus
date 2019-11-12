@@ -1,0 +1,68 @@
+{
+    "westGate": [
+        {
+            "serviceNumber":"118",
+            "destinationCode": 97009,
+            "nextBus": "2019-11-12T17:52:49+08:00",
+            "nextBus2": "2019-11-12T17:58:24+08:00",
+            "nextBus3": "2019-11-12T18:09:53+08:00",
+            "type": "double deck",
+            "wheelChairAccessible": true
+         }
+    ],
+    "oppWestGate": [
+        {
+            "serviceNumber":"118",
+            "destinationCode": 97009,
+            "nextBus": "2019-11-12T17:52:49+08:00",
+            "nextBus2": "2019-11-12T17:58:24+08:00",
+            "nextBus3": "2019-11-12T18:09:53+08:00",
+            "type": "single deck",
+            "wheelChairAccessible": false
+         }
+    ],
+    "mainGate": [
+        {
+            "serviceNumber":"118",
+            "destinationCode": 97009,
+            "nextBus": "2019-11-12T17:52:49+08:00",
+            "nextBus2": "2019-11-12T17:58:24+08:00",
+            "nextBus3": "2019-11-12T18:09:53+08:00",
+            "type": "double deck",
+            "wheelChairAccessible": false
+         }
+    ],
+    "oppMainGate": [
+        {
+            "serviceNumber":"118",
+            "destinationCode": 97009,
+            "nextBus": "2019-11-12T17:52:49+08:00",
+            "nextBus2": "2019-11-12T17:58:24+08:00",
+            "nextBus3": "2019-11-12T18:09:53+08:00",
+            "type": "bendy",
+            "wheelChairAccessible": false
+         }
+    ],
+    "eastGate": [
+        {
+            "serviceNumber":"118",
+            "destinationCode": 97009,
+            "nextBus": "2019-11-12T17:52:49+08:00",
+            "nextBus2": "2019-11-12T17:58:24+08:00",
+            "nextBus3": "2019-11-12T18:09:53+08:00",
+            "type": "single deck",
+            "wheelChairAccessible": false
+         }
+    ],
+    "oppEastGate": [
+        {
+            "serviceNumber":"118",
+            "destinationCode": 97009,
+            "nextBus": "2019-11-12T17:52:49+08:00",
+            "nextBus2": "2019-11-12T17:58:24+08:00",
+            "nextBus3": "2019-11-12T18:09:53+08:00",
+            "type": "single deck",
+            "wheelChairAccessible": false
+         }
+    ]
+}
