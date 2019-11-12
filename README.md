@@ -9,7 +9,7 @@
 | Description | Returns real-time Bus Arrival information of Bus Services at Temasek Polytechnic, including Est. Arrival Time, Destination Code. |
 | Update Freq | 1 minute |
 
-## Attributes
+### Attributes
 | Attributes             | Description                                                                   | Example     |
 |------------------------|-------------------------------------------------------------------------------|-------------|
 | serviceNumber          | Bus service number                                                            | 15          |
