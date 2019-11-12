@@ -31,7 +31,7 @@ All requests to a malformed URI will be returned with:
             "nextBus2": "2019-11-12T17:58:24+08:00",
             "nextBus3": "2019-11-12T18:09:53+08:00",
             "type": "double deck",
-            "wheelChairAccessible": true
+            "isWheelChairAccessible": true
          }
     ],
     "oppWestGate": [
@@ -42,7 +42,7 @@ All requests to a malformed URI will be returned with:
             "nextBus2": "2019-11-12T17:58:24+08:00",
             "nextBus3": "2019-11-12T18:09:53+08:00",
             "type": "single deck",
-            "wheelChairAccessible": false
+            "isWheelChairAccessible": false
          }
     ],
     "mainGate": [
@@ -53,7 +53,7 @@ All requests to a malformed URI will be returned with:
             "nextBus2": "2019-11-12T17:58:24+08:00",
             "nextBus3": "2019-11-12T18:09:53+08:00",
             "type": "double deck",
-            "wheelChairAccessible": false
+            "isWheelChairAccessible": false
          }
     ],
     "oppMainGate": [
@@ -64,7 +64,7 @@ All requests to a malformed URI will be returned with:
             "nextBus2": "2019-11-12T17:58:24+08:00",
             "nextBus3": "2019-11-12T18:09:53+08:00",
             "type": "bendy",
-            "wheelChairAccessible": false
+            "isWheelChairAccessible": true
          }
     ],
     "eastGate": [
@@ -75,7 +75,7 @@ All requests to a malformed URI will be returned with:
             "nextBus2": "2019-11-12T17:58:24+08:00",
             "nextBus3": "2019-11-12T18:09:53+08:00",
             "type": "double deck",
-            "wheelChairAccessible": false
+            "isWheelChairAccessible": true
          }
     ],
     "oppEastGate": [
@@ -86,7 +86,7 @@ All requests to a malformed URI will be returned with:
             "nextBus2": "2019-11-12T17:58:24+08:00",
             "nextBus3": "2019-11-12T18:09:53+08:00",
             "type": "single deck",
-            "wheelChairAccessible": false
+            "isWheelChairAccessible": true
          }
     ]
 }
@@ -118,7 +118,7 @@ Where `busStopLocation` can be one of these 6 values:
         "nextBus2": "2019-11-12T17:58:24+08:00",
         "nextBus3": "2019-11-12T18:09:53+08:00",
         "type": "single deck",
-        "wheelChairAccessible": false
+        "isWheelChairAccessible": false
     },
     {
         "serviceNumber":"129",
@@ -127,7 +127,7 @@ Where `busStopLocation` can be one of these 6 values:
         "nextBus2": "2019-11-12T18:08:15+08:00",
         "nextBus3": "2019-11-12T18:29:48+08:00",
         "type": "bendy",
-        "wheelChairAccessible": true
+        "isWheelChairAccessible": true
     }
 ]
 ```
@@ -167,7 +167,7 @@ And `serviceNumber` can be one of these eight values:
     "nextBus2": "2019-11-12T17:58:24+08:00",
     "nextBus3": "2019-11-12T18:09:53+08:00",
     "type": "double deck",
-    "wheelChairAccessible": false
+    "isWheelChairAccessible": false
 }
 ```
 
