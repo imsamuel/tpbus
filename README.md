@@ -146,7 +146,7 @@ Where `busStopLocation` can be one of these six values:
 - east-gate
 - opp-east-gate
 
-And `serviceNumber` can be one of these eight values:
+and `serviceNumber` can be one of these eight values:
 - 8
 - 15
 - 23
