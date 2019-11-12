@@ -12,7 +12,7 @@ All requests to a malformed URI will be returned with:
 }
 ```
 
-### List all bus service timings at all bus stops
+### List the timings of all bus services at all bus stops
 
 **Definition**
 
@@ -92,7 +92,7 @@ All requests to a malformed URI will be returned with:
 }
 ```
 
-### List all bus service timings at a specified bus stop
+### List the timings of all bus services at a specified bus stop
 
 **Definition**
 
