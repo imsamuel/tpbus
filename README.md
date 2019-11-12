@@ -1,5 +1,25 @@
 # A REST API for the timings of the bus services at Temasek Polytechnic
 
+## Preface
+
+### Details
+|||
+|-------------|----------------------------------------------------------------------------------------------------------------------------------|
+| URL         | https://tpbus.sg |
+| Description | Returns real-time Bus Arrival information of Bus Services at Temasek Polytechnic, including Est. Arrival Time, Destination Code. |
+| Update Freq | 1 minute |
+
+## Attributes
+| Attributes             | Description                                                                   | Example     |
+|------------------------|-------------------------------------------------------------------------------|-------------|
+| serviceNumber          | Bus service number                                                            | 15          |
+| destinationCode        | Reference code of the last bus stop where this bus will terminate its service | 77131       |
+| nextBus                | Estimated timing for the next bus                                             |             |
+| nextBus2               | Estimated timing for the subsequent bus                                       |             |
+| nextBus3               | Estimated timing for the bus after the subsequent one                         |             |
+| type                   | Vehicle type: single deck OR double deck OR bendy                             | single deck |
+| isWheelChairAccessible | Indicates if bus is wheel-chair accessible: true OR false                     | true        |
+
 ## Usage
 
 All requests to a malformed URI will be returned with:
