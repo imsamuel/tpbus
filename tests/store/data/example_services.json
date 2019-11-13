@@ -1,0 +1,154 @@
+[
+  {
+    "serviceNumber":"8",
+    "destinationCode": 97009,
+    "nextBus": {
+      "estimatedArrival": "2019-11-12T17:52:49+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-12T17:58:24+08:00",
+      "type": "bendy",
+      "isWheelChairAccessible": false
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-12T18:09:53+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    }
+  },
+  {
+    "serviceNumber":"15",
+    "destinationCode": 97009,
+    "nextBus": {
+      "estimatedArrival": "2019-11-12T17:52:49+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-12T17:58:24+08:00",
+      "type": "bendy",
+      "isWheelChairAccessible": false
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-12T18:09:53+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    }
+  },
+  {
+    "serviceNumber":"23",
+    "destinationCode": 97009,
+    "nextBus": {
+      "estimatedArrival": "2019-11-12T17:52:49+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-12T17:58:24+08:00",
+      "type": "bendy",
+      "isWheelChairAccessible": false
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-12T18:09:53+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    }
+  },
+  {
+    "serviceNumber":"69",
+    "destinationCode": 97009,
+    "nextBus": {
+      "estimatedArrival": "2019-11-12T17:52:49+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-12T17:58:24+08:00",
+      "type": "bendy",
+      "isWheelChairAccessible": false
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-12T18:09:53+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    }
+  },
+  {
+    "serviceNumber":"118",
+    "destinationCode": 97009,
+    "nextBus": {
+      "estimatedArrival": "2019-11-12T17:52:49+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-12T17:58:24+08:00",
+      "type": "bendy",
+      "isWheelChairAccessible": false
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-12T18:09:53+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    }
+  },
+  {
+    "serviceNumber":"118B",
+    "destinationCode": 97009,
+    "nextBus": {
+      "estimatedArrival": "2019-11-12T17:52:49+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-12T17:58:24+08:00",
+      "type": "bendy",
+      "isWheelChairAccessible": false
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-12T18:09:53+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    }
+  },
+  {
+    "serviceNumber":"129",
+    "destinationCode": 97009,
+    "nextBus": {
+      "estimatedArrival": "2019-11-12T17:52:49+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-12T17:58:24+08:00",
+      "type": "bendy",
+      "isWheelChairAccessible": false
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-12T18:09:53+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    }
+  },
+  {
+    "serviceNumber":"518",
+    "destinationCode": 97009,
+    "nextBus": {
+      "estimatedArrival": "2019-11-12T17:52:49+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-12T17:58:24+08:00",
+      "type": "bendy",
+      "isWheelChairAccessible": false
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-12T18:09:53+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    }
+  }
+]
