@@ -51,10 +51,10 @@ var BusStopsAtGates = struct {
 	East busStopAtGate
 	OppEast busStopAtGate
 }{
-	busStopAtGate{"west", "75249"},
-	busStopAtGate{"opp-west", "75241"},
-	busStopAtGate{"main", "75239"},
-	busStopAtGate{"opp-main", "75231"},
-	busStopAtGate{"east", "75229"},
-	busStopAtGate{"opp-east", "75221"},
+	busStopAtGate{"west-gate", "75249"},
+	busStopAtGate{"opp-west-gate", "75241"},
+	busStopAtGate{"main-gate", "75239"},
+	busStopAtGate{"opp-main-gate", "75231"},
+	busStopAtGate{"east-gate", "75229"},
+	busStopAtGate{"opp-east-gate", "75221"},
 }

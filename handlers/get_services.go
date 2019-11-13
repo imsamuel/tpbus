@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"encoding/json"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"tpbus/store"
@@ -9,21 +8,57 @@ import (
 
 var appStore = store.Store
 
-// Handler for route /services/<bus-stop-location> | Accepts a BusStopCode param
+// Handler for route /services/<bus-stop-location> | accepts ServiceNumber query param
 func GetServices(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	// Extract the bus stop location provided from path parameter
 	busStopLocation := ps.ByName("busStopLocation")
 
-	// Retrieve the slice of bus bus_services from store.
-	services, err := appStore.GetServices(busStopLocation)
-	if err != nil {
-		panic("passed invalid bus stop location")
+	/*
+	Check if a valid bus stop location has been provided.
+	If not, return an error message as part of the HTTP response.
+	*/
+	if !isBusStopLocationValid(busStopLocation) {
+		errorMsg, err := getNotFoundMessage(r.URL.Path)
+		if err != nil {
+			panic(err)
+		}
+
+		w.WriteHeader(http.StatusNotFound)
+		w.Header().Set("Content-Type", "application/json")
+		w.Write(errorMsg)
 	}
 
-	// Get a JSON-encoded value of the slice of bus_services.
-	JSON, _ := json.MarshalIndent(services, "", "    ") // no error handling needed; valid arg
+	/*
+	Check if valid ServiceNumber query parameter provided.
+	If so, return to client only the timings of the specified bus service.
+	*/
+	serviceNumber := r.URL.Query().Get("ServiceNumber")
+	if isServiceNumberValid(serviceNumber) {
+		service := appStore.GetAService(busStopLocation, serviceNumber)
+		marshalledService, err := getPrettyPrint(service)
+		if err != nil {
+			panic(err)
+		}
+
+		w.WriteHeader(http.StatusOK)
+		w.Header().Set("Content-Type", "application/json")
+		w.Write(marshalledService)
+	}
+
+	// Retrieve the timings of all bus services of specified bus stop.
+	services := appStore.GetAllServices(busStopLocation)
+	marshalledServices, err := getPrettyPrint(services)
+	if err != nil {
+		panic(err)
+	}
 
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/json")
-	w.Write(JSON)
+	w.Write(marshalledServices)
 }
+
+/*
+Note:
+- getNotFoundMessage called as early as possible to panic if error produced.
+  Panicking because if an error is produced it's a development issue.
+*/

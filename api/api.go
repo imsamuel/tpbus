@@ -15,12 +15,15 @@ type Response struct {
 type Service struct {
 	ServiceNumber string `json:"ServiceNo"`
 	NextBus IncomingBusDetails `json:"NextBus"`
-	SubsequentBus IncomingBusDetails `json:"NextBus2"`
+	NextBus2 IncomingBusDetails `json:"NextBus2"`
+	NextBus3 IncomingBusDetails `json:"NextBus3"`
 }
 
 type IncomingBusDetails struct {
 	DestinationCode string `json:"DestinationCode"`
 	EstimatedArrival string `json"EstimatedArrival"`
+	Feature string `json:"Feature"`
+	Type string `json:"SD"`
 }
 
 /*

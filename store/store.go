@@ -3,77 +3,84 @@ package store
 
 import (
 	"tpbus/constants"
-	"tpbus/store/services"
+	"tpbus/models"
 )
+
+type Store models.BusStops
 
 // Assigning the struct of gates to a variable(cutting down name space).
 var gates = constants.BusStopsAtGates
 
-type store struct {
-	WestGate *services.Services
-	OppWestGate *services.Services
-	MainGate *services.Services
-	OppMainGate *services.Services
-	EastGate *services.Services
-	OppEastGate *services.Services
-}
+// Initializes a pointer to a Store instance.
+func newStore() *Store { return &Store{} }
 
-func New() *store {
-	return &store{
-		WestGate:    services.New(),
-		OppWestGate: services.New(),
-		MainGate:    services.New(),
-		OppMainGate: services.New(),
-		EastGate:    services.New(),
-		OppEastGate: services.New(),
+// Gets the data of a single bus service at specified bus stop.
+func (s *Store) GetAService(busStopLocation string, serviceNumber string) models.Service {
+	var services models.Services
+
+	switch busStopLocation {
+	case gates.West.Name:
+		services = s.WestGate
+	case gates.OppWest.Name:
+		services = s.OppWestGate
+	case gates.Main.Name:
+		services = s.MainGate
+	case gates.OppMain.Name:
+		services = s.OppMainGate
+	case gates.East.Name:
+		services = s.EastGate
+	case gates.OppEast.Name:
+		services = s.OppEastGate
 	}
+
+	for _, service := range services {
+		if service.ServiceNumber == serviceNumber {
+			return service
+		}
+	}
+
+	return models.Service{} // to satisfy the compulsory return at top scope
 }
 
 // Gets the data of the bus services at the specified bus stop.
-func (s *store) GetServices(busStopLocation string) (services.Services, error) {
+func (s *Store) GetAllServices(busStopLocation string) models.Services {
+	var services models.Services
+
 	switch busStopLocation {
 	case gates.West.Name:
-		return *s.WestGate, nil
+		services = s.WestGate
 	case gates.OppWest.Name:
-		return *s.OppWestGate, nil
+		services = s.OppWestGate
 	case gates.Main.Name:
-		return *s.MainGate, nil
+		services = s.MainGate
 	case gates.OppMain.Name:
-		return *s.OppMainGate, nil
+		services = s.OppMainGate
 	case gates.East.Name:
-		return *s.EastGate, nil
+		services = s.EastGate
 	case gates.OppEast.Name:
-		return *s.OppEastGate, nil
-	default:
-		return nil, ErrInvalidBusStopLocation
+		services = s.OppEastGate
 	}
+
+	return services
 }
 
 // Sets the specified Store field with the given data of bus services.
-func (s *store) SetServices(busStopLocation string, services services.Services) error {
+func (s *Store) SetServices(busStopLocation string, services models.Services) {
 	switch busStopLocation {
 	case gates.West.Name:
-		*s.WestGate = services
-		return nil
+		s.WestGate = services
 	case gates.OppWest.Name:
-		*s.OppWestGate = services
-		return nil
+		s.OppWestGate = services
 	case gates.Main.Name:
-		*s.MainGate = services
-		return nil
+		s.MainGate = services
 	case gates.OppMain.Name:
-		*s.OppMainGate = services
-		return nil
+		s.OppMainGate = services
 	case gates.East.Name:
-		*s.EastGate = services
-		return nil
+		s.EastGate = services
 	case gates.OppEast.Name:
-		*s.OppEastGate = services
-		return nil
-	default:
-		return ErrInvalidBusStopLocation
+		s.OppEastGate = services
 	}
 }
 
 // Exported store
-var Store = New()
+var Value = newStore()

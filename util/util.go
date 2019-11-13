@@ -7,6 +7,7 @@ package util
 import (
 	"tpbus/api"
 	"tpbus/constants"
+	"tpbus/models"
 	"tpbus/store/services"
 )
 
@@ -40,31 +41,35 @@ var DestinationCodeToDestination = map[string]string{
 }
 
 /*
-Returns an instance of models.BusServices populated with the values from the
+Returns an instance of models.BusStop populated with the values from the
 passed in struct (in which the body of the API response got marshalled into).
 */
-func TransformAPIResponse(responseStruct api.Response) services.Services {
+func TransformAPIResponse(responseStruct api.Response) models.BusStop {
 	/*
-	Initializing an empty instance of models.BusServices which will be
-	appended with the newly populated instances of model.BusService.
+	Initializing an empty instance of model.Services which will be
+	appended with the newly populated instances of model.Service.
 	(see for loop)
 	*/
-	var busServices services.Services
+	var busServices models.Services
 
 	for _, service := range responseStruct.Services {
 		/*
-		Initializing an empty instance of models.BusService is going to be
+		Initializing an empty instance of model.Service which will be
 		populated with the data from the struct in which the API response
 		got decoded into.
 		*/
-		var busService services.Service
+		var busService models.Service
 
 		busService.ServiceNumber = service.ServiceNumber
-		busService.NextBus = service.NextBus.EstimatedArrival
-		busService.SubsequentBus = service.SubsequentBus.EstimatedArrival
+		busService.DestinationCode = service.NextBus.DestinationCode
+		busService.NextBus = models.IncomingBus{
+			EstimatedArrival:       service.NextBus.EstimatedArrival,
+			Type:                   service.NextBus.Type,
+			IsWheelChairAccessible: false,
+		}
+		busService.NextBus2 = service.NextBus2.EstimatedArrival
+		busService.NextBus3 = service.NextBus3.EstimatedArrival
 
-		destinationCode := service.NextBus.DestinationCode
-		busService.Destination = DestinationCodeToDestination[destinationCode]
 
 		// Appending the populated models.BusService instance to busServices.
 		busServices = append(busServices, busService)

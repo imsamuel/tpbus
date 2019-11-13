@@ -10,15 +10,16 @@
 | Update Freq | 1 minute |
 
 ### Attributes
-| Attributes             | Description                                                                   | Example     |
-|------------------------|-------------------------------------------------------------------------------|-------------|
-| serviceNumber          | Bus service number                                                            | 15          |
-| destinationCode        | Reference code of the last bus stop where this bus will terminate its service | 77131       |
-| nextBus                | Estimated timing for the next bus                                             |             |
-| nextBus2               | Estimated timing for the subsequent bus                                       |             |
-| nextBus3               | Estimated timing for the bus after the subsequent one                         |             |
-| type                   | Vehicle type: single deck OR double deck OR bendy                             | single deck |
-| isWheelChairAccessible | Indicates if bus is wheel-chair accessible: true OR false                     | true        |
+| Attributes             | Description                                                                   | Example                   |
+|------------------------|-------------------------------------------------------------------------------|---------------------------|
+| serviceNumber          | Bus service number                                                            | 15                        |
+| destinationCode        | Reference code of the last bus stop where this bus will terminate its service | 77131                     |
+| nextBus                | Bus level attributes for next bus                                             |                           |
+| nextBus2               | Bus level attributes for subsequent bus                                       |                           |
+| nextBus3               | Bus level attributes for bus after subsequent one                             |                           |
+| ^ estimatedArrival     | Date-time of this bus’ estimated time of arrival expressed in the UTC standard, GMT+8 for Singapore Standard Time (SST)                                                                                                    | 2019-04-29T07:20:24+08:00 |
+| ^ type                   | Vehicle type: single deck OR double deck OR bendy                           | single deck               |
+| ^ isWheelChairAccessible | Indicates if bus is wheel-chair accessible: true OR false                   | true                      |
 
 ## Usage
 
@@ -43,72 +44,126 @@ All requests to a malformed URI will be returned with:
 - `200 OK` on success
 ```json
 {
-    "westGate": [
-        {
-            "serviceNumber":"118",
+    "westGate": {
+        "118": {
             "destinationCode": 97009,
-            "nextBus": "2019-11-12T17:52:49+08:00",
-            "nextBus2": "2019-11-12T17:58:24+08:00",
-            "nextBus3": "2019-11-12T18:09:53+08:00",
-            "type": "double deck",
-            "isWheelChairAccessible": true
-         }
-    ],
-    "oppWestGate": [
-        {
-            "serviceNumber":"118",
-            "destinationCode": "97009",
-            "nextBus": "2019-11-12T17:52:49+08:00",
-            "nextBus2": "2019-11-12T17:58:24+08:00",
-            "nextBus3": "2019-11-12T18:09:53+08:00",
-            "type": "single deck",
-            "isWheelChairAccessible": false
-         }
-    ],
-    "mainGate": [
-        {
-            "serviceNumber":"118",
-            "destinationCode": "97009",
-            "nextBus": "2019-11-12T17:52:49+08:00",
-            "nextBus2": "2019-11-12T17:58:24+08:00",
-            "nextBus3": "2019-11-12T18:09:53+08:00",
-            "type": "double deck",
-            "isWheelChairAccessible": false
-         }
-    ],
-    "oppMainGate": [
-        {
-            "serviceNumber":"118",
-            "destinationCode": "97009",
-            "nextBus": "2019-11-12T17:52:49+08:00",
-            "nextBus2": "2019-11-12T17:58:24+08:00",
-            "nextBus3": "2019-11-12T18:09:53+08:00",
-            "type": "bendy",
-            "isWheelChairAccessible": true
-         }
-    ],
-    "eastGate": [
-        {
-            "serviceNumber":"118",
-            "destinationCode": "97009",
-            "nextBus": "2019-11-12T17:52:49+08:00",
-            "nextBus2": "2019-11-12T17:58:24+08:00",
-            "nextBus3": "2019-11-12T18:09:53+08:00",
-            "type": "double deck",
-            "isWheelChairAccessible": true
-         }
-    ],
-    "oppEastGate": [
-        {
-            "serviceNumber":"118",
-            "destinationCode": "97009",
-            "nextBus": "2019-11-12T17:52:49+08:00",
-            "nextBus2": "2019-11-12T17:58:24+08:00",
-            "nextBus3": "2019-11-12T18:09:53+08:00",
-            "type": "single deck",
-            "isWheelChairAccessible": true
-         }
-    ]
+            "nextBus": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "double deck",
+                "isWheelChairAccessible": true
+            },
+            "nextBus2": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "single deck",
+                "isWheelChairAccessible": false
+            },
+            "nextBus3": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "bendy",
+                "isWheelChairAccessible": true
+            }
+        }
+    },
+    "oppWestGate": {
+        "118": {
+            "destinationCode": 97009,
+            "nextBus": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "double deck",
+                "isWheelChairAccessible": true
+            },
+            "nextBus2": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "single deck",
+                "isWheelChairAccessible": false
+            },
+            "nextBus3": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "bendy",
+                "isWheelChairAccessible": true
+            }
+        }
+    },
+    "mainGate": {
+        "118": {
+            "destinationCode": 97009,
+            "nextBus": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "double deck",
+                "isWheelChairAccessible": true
+            },
+            "nextBus2": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "single deck",
+                "isWheelChairAccessible": false
+            },
+            "nextBus3": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "bendy",
+                "isWheelChairAccessible": true
+            }
+        }
+    },
+    "oppMainGate": {
+        "118": {
+            "destinationCode": 97009,
+            "nextBus": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "double deck",
+                "isWheelChairAccessible": true
+            },
+            "nextBus2": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "single deck",
+                "isWheelChairAccessible": false
+            },
+            "nextBus3": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "bendy",
+                "isWheelChairAccessible": true
+            }
+        }
+    },
+    "eastGate": {
+        "118": {
+            "destinationCode": 97009,
+            "nextBus": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "double deck",
+                "isWheelChairAccessible": true
+            },
+            "nextBus2": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "single deck",
+                "isWheelChairAccessible": false
+            },
+            "nextBus3": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "bendy",
+                "isWheelChairAccessible": true
+            }
+        }
+    },
+    "oppEastGate": {
+        "118": {
+            "destinationCode": 97009,
+            "nextBus": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "double deck",
+                "isWheelChairAccessible": true
+            },
+            "nextBus2": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "single deck",
+                "isWheelChairAccessible": false
+            },
+            "nextBus3": {
+                "estimatedArrival": "2019-11-12T17:52:49+08:00",
+                "type": "bendy",
+                "isWheelChairAccessible": true
+            }
+        }
+    } 
 }
 ```
 
@@ -130,26 +185,44 @@ Where `busStopLocation` can be one of these 6 values:
 
 - `200 OK` on success
 ```json
-[
-    {
-        "serviceNumber":"118",
-        "destinationCode": "97009",
-        "nextBus": "2019-11-12T17:52:49+08:00",
-        "nextBus2": "2019-11-12T17:58:24+08:00",
-        "nextBus3": "2019-11-12T18:09:53+08:00",
-        "type": "single deck",
-        "isWheelChairAccessible": false
+{
+    "118": {
+        "destinationCode": 97009,
+        "nextBus": {
+            "estimatedArrival": "2019-11-12T17:52:49+08:00",
+            "type": "double deck",
+            "isWheelChairAccessible": true
+        },
+        "nextBus2": {
+            "estimatedArrival": "2019-11-12T17:52:49+08:00",
+            "type": "single deck",
+            "isWheelChairAccessible": false
+        },
+        "nextBus3": {
+            "estimatedArrival": "2019-11-12T17:52:49+08:00",
+            "type": "bendy",
+            "isWheelChairAccessible": true
+        }
     },
-    {
-        "serviceNumber":"129",
-        "destinationCode": ,
-        "nextBus": "2019-11-12T17:56:21+08:00",
-        "nextBus2": "2019-11-12T18:08:15+08:00",
-        "nextBus3": "2019-11-12T18:29:48+08:00",
-        "type": "bendy",
-        "isWheelChairAccessible": true
+    "129": {
+        "destinationCode": 97009,
+        "nextBus": {
+            "estimatedArrival": "2019-11-12T17:52:49+08:00",
+            "type": "double deck",
+            "isWheelChairAccessible": true
+        },
+        "nextBus2": {
+            "estimatedArrival": "2019-11-12T17:52:49+08:00",
+            "type": "single deck",
+            "isWheelChairAccessible": false
+        },
+        "nextBus3": {
+            "estimatedArrival": "2019-11-12T17:52:49+08:00",
+            "type": "bendy",
+            "isWheelChairAccessible": true
+        }
     }
-]
+}
 ```
 
 ### List the timings of a single bus service at a specified bus stop
@@ -181,13 +254,22 @@ and `serviceNumber` can be one of these eight values:
 - `200 OK` on success
 ```json
 {
-    "serviceNumber":"118",
-    "destinationCode": "97009",
-    "nextBus": "2019-11-12T17:52:49+08:00",
-    "nextBus2": "2019-11-12T17:58:24+08:00",
-    "nextBus3": "2019-11-12T18:09:53+08:00",
-    "type": "double deck",
-    "isWheelChairAccessible": false
+    "destinationCode": 97009,
+    "nextBus": {
+        "estimatedArrival": "2019-11-12T17:52:49+08:00",
+        "type": "double deck",
+        "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+        "estimatedArrival": "2019-11-12T17:52:49+08:00",
+        "type": "single deck",
+        "isWheelChairAccessible": false
+    },
+    "nextBus3": {
+        "estimatedArrival": "2019-11-12T17:52:49+08:00",
+        "type": "bendy",
+        "isWheelChairAccessible": true
+    }
 }
 ```
 
