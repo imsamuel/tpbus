@@ -8,7 +8,7 @@ import (
 	"tpbus/api"
 	"tpbus/constants"
 	"tpbus/models"
-	"tpbus/store/services"
+	// "tpbus/store/services"
 )
 
 // Details of the bus stops at Temasek Poly. (cutting down namespace)
@@ -44,7 +44,7 @@ var DestinationCodeToDestination = map[string]string{
 Returns an instance of models.BusStop populated with the values from the
 passed in struct (in which the body of the API response got marshalled into).
 */
-func TransformAPIResponse(responseStruct api.Response) models.BusStop {
+func TransformAPIResponse(responseStruct api.Response) models.Services {
 	/*
 	Initializing an empty instance of model.Services which will be
 	appended with the newly populated instances of model.Service.
@@ -67,7 +67,11 @@ func TransformAPIResponse(responseStruct api.Response) models.BusStop {
 			Type:                   service.NextBus.Type,
 			IsWheelChairAccessible: false,
 		}
-		busService.NextBus2 = service.NextBus2.EstimatedArrival
+		busService.NextBus2 = models.IncomingBus{
+			EstimatedArrival:       service.NextBus2.EstimatedArrival,
+			Type:                   service.NextBus2.Type,
+			IsWheelChairAccessible: false,
+		}
 		busService.NextBus3 = service.NextBus3.EstimatedArrival
 
 
