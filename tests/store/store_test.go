@@ -3,10 +3,12 @@ package store
 import (
 	"github.com/google/go-cmp/cmp"
 	"testing"
-	"tpbus/models"
 )
 
-// An instance of models.Services filled with dummy data.
+// An instance of models.Service filled with dummy test data.
+var fakeService = getService()
+
+// An instance of models.Services filled with dummy test_data.
 var fakeServices = getServices()
 
 // Tests the GetAService method on type Store.
@@ -16,13 +18,7 @@ func TestGetAService(t *testing.T) {
 
 	targetServiceNumber := "15"
 
-	var want models.Service
-	for _, service := range fakeServices {
-		if service.ServiceNumber == targetServiceNumber {
-			want = service
-		}
-	}
-
+	want := fakeService
 	got := appStore.GetAService("west-gate", targetServiceNumber)
 
 	if !cmp.Equal(got, want) {
