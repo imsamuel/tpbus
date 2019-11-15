@@ -17,7 +17,7 @@ type busStopAtGate struct {
 }
 
 /*
-Holds the data about the bus stops at the beginning/end
+Holds the test_data about the bus stops at the beginning/end
 destinations of the bus bus_services at Temasek Polytechnic.
 */
 var BusStopsOfServices = struct {
@@ -42,7 +42,7 @@ var BusStopsOfServices = struct {
 	busStopOfService{"Toa Payoh Int", "52009"},
 }
 
-// Holds the data of the bus stops at Temasek Polytechnic.
+// Holds the test_data of the bus stops at Temasek Polytechnic.
 var BusStopsAtGates = struct {
 	West busStopAtGate
 	OppWest busStopAtGate

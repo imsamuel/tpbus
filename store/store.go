@@ -12,9 +12,9 @@ type Store models.BusStops
 var gates = constants.BusStopsAtGates
 
 // Initializes a pointer to a Store instance.
-func newStore() *Store { return &Store{} }
+func New() *Store { return &Store{} }
 
-// Gets the data of a single bus service at specified bus stop.
+// Gets the test_data of a single bus service at specified bus stop.
 func (s *Store) GetAService(busStopLocation string, serviceNumber string) models.Service {
 	var services models.Services
 
@@ -42,7 +42,7 @@ func (s *Store) GetAService(busStopLocation string, serviceNumber string) models
 	return models.Service{} // to satisfy the compulsory return at top scope
 }
 
-// Gets the data of the bus services at the specified bus stop.
+// Gets the test_data of the bus services at the specified bus stop.
 func (s *Store) GetAllServices(busStopLocation string) models.Services {
 	var services models.Services
 
@@ -64,7 +64,7 @@ func (s *Store) GetAllServices(busStopLocation string) models.Services {
 	return services
 }
 
-// Sets the specified Store field with the given data of bus services.
+// Sets the specified Store field with the given test_data of bus services.
 func (s *Store) SetServices(busStopLocation string, services models.Services) {
 	switch busStopLocation {
 	case gates.West.Name:
@@ -83,4 +83,4 @@ func (s *Store) SetServices(busStopLocation string, services models.Services) {
 }
 
 // Exported store
-var Value = newStore()
+var Value = New()

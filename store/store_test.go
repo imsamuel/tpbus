@@ -26,7 +26,7 @@ func TestGetAService(t *testing.T) {
 			IsWheelChairAccessible: true,
 		}
 
-		// Assigning test data to the MainGate field of store.
+		// Assigning test test_data to the MainGate field of store.
 		store.MainGate = &services.Services{
 			fakeBusService,
 		}
@@ -36,7 +36,7 @@ func TestGetAService(t *testing.T) {
 
 		// Hoping for retrieved value to be what was inserted into the Main field.
 		if !cmp.Equal(retrieved, fakeBusService) {
-			t.Errorf("getServices did not retrieve the correct data")
+			t.Errorf("getServices did not retrieve the correct test_data")
 		}
 	})
 }
@@ -47,7 +47,7 @@ func TestGetAllServices(t *testing.T) {
 		// Creating an instance of store to test its GetAllServices method.
 		store := New()
 
-		// Creating an instance of services.Services to use as data.
+		// Creating an instance of services.Services to use as test_data.
 		fakeBusServices := &services.Services{
 			services.Service{
 				ServiceNumber: "15",
@@ -60,7 +60,7 @@ func TestGetAllServices(t *testing.T) {
 			},
 		}
 
-		// Assigning the test data to the MainGate field of store.
+		// Assigning the test test_data to the MainGate field of store.
 		store.MainGate = fakeBusServices
 
 		// Trying to get bus services of the bus stop at TP's main gate.
@@ -68,7 +68,7 @@ func TestGetAllServices(t *testing.T) {
 
 		// Hoping for retrieved value to be what was inserted into the Main field.
 		if !cmp.Equal(retrieved, *fakeBusServices) {
-			t.Errorf("getServices did not retrieve the correct data")
+			t.Errorf("getServices did not retrieve the correct test_data")
 		}
 	})
 }
@@ -89,7 +89,7 @@ func TestSetServices(t *testing.T) {
 			busStops.OppEast.Name,
 		}
 
-		// Creating an instance of services.Services to use as data.
+		// Creating an instance of services.Services to use as test_data.
 		fakeBusServices := &services.Services{
 			services.Service{
 				ServiceNumber: "15",

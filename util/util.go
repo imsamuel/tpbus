@@ -55,7 +55,7 @@ func TransformAPIResponse(responseStruct api.Response) models.Services {
 	for _, service := range responseStruct.Services {
 		/*
 		Initializing an empty instance of model.Service which will be
-		populated with the data from the struct in which the API response
+		populated with the test_data from the struct in which the API response
 		got decoded into.
 		*/
 		var busService models.Service

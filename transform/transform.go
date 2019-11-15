@@ -26,12 +26,11 @@ var isWheelChairAccessible = map[string]bool{
 responseToServices takes a api.Response instance and uses its values to
 construct an instance of model.Services, and returns it.
 */
-func responseToServices(response api.Response) models.Services {
-	// The models.Services instance that will be returned
+func ResponseToServices(response api.Response) models.Services {
 	var newServices models.Services
 
 	for _, respService := range response.Services {
-		var newService models.Service // initialize a models.Services to write into.
+		var newService models.Service
 
 		newService.ServiceNumber = respService.ServiceNumber
 		newService.DestinationCode = respService.NextBus.DestinationCode

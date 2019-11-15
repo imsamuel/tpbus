@@ -6,7 +6,7 @@ import (
 	"tpbus/store"
 )
 
-var appStore = store.Store
+var appStore = store.Value
 
 // Handler for route /services/<bus-stop-location> | accepts ServiceNumber query param
 func GetServices(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
