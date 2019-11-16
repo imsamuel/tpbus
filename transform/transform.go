@@ -18,8 +18,8 @@ var getBusType = map[string]string{
 
 // Utility map for getting a bool from whether a bus is wheelchair accessible.
 var isWheelChairAccessible = map[string]bool{
-	"WAB": false,
-	"": true,
+	"WAB": true,
+	"": false,
 }
 
 /*

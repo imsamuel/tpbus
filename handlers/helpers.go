@@ -3,7 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"tpbus-backend/constants"
+	"tpbus/constants"
 )
 
 // Defines the message sent as part of a HTTP response to a Not Found error.
@@ -34,15 +34,15 @@ a Not Found error.
 */
 func getNotFoundMessage(path string) ([]byte, error) {
 	notFoundMessage := NotFoundMessage{
-		ID:          "Resource could not be found",
-		Description: fmt.Sprintf("API could not find a resource mapped to %q", path),
+		ID:          "Resource not found",
+		Description: fmt.Sprintf("API could not find a resource mapped to path %s", path),
 	}
-	marshalled, err := json.Marshal(notFoundMessage)
+	marshalled, err := getPrettyPrint(notFoundMessage)
 	return marshalled, err
 }
 
 /*
-Takes any value(a struct will be passed to it for this app's scenario) any
+Takes any value(a struct will be passed to it for this app's scenario) and
 marshals it to be JSON formatted which will have 4 spaces for indentation.
 */
 func getPrettyPrint(v interface{}) ([]byte, error) {

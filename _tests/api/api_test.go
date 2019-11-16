@@ -6,25 +6,27 @@ import (
 	"io/ioutil"
 	"strings"
 	"testing"
+	"tpbus/api"
+	"tpbus/constants"
 )
 
 /*
 The bus stop code at the bus stop located at TP's west gate.
 Made package-level for reuse across across test functions.
 */
-var busStopCodeAtWestGate = "75249"
+var busStopCodeAtWestGate = constants.BusStopsAtGates.West.Name
 
-// Tests the newRequest function
+// Tests the NewRequest function.
 func TestNewRequest(t *testing.T) {
 	t.Run("expecting no error for valid parameters", func(t *testing.T) {
-		_, err := newRequest(busStopCodeAtWestGate)
+		_, err := api.NewRequest(busStopCodeAtWestGate)
 		if err != nil {
 			t.Errorf("expected no error but got one: %s\n", err.Error())
 		}
 	})
 
 	t.Run("checking if account key attached to Request", func(t *testing.T) {
-		req, _ := newRequest(busStopCodeAtWestGate)
+		req, _ := api.NewRequest(busStopCodeAtWestGate)
 
 		/*
 			Note: req.Header.Get(key) returns the value associated
@@ -36,24 +38,12 @@ func TestNewRequest(t *testing.T) {
 	})
 }
 
-// Tests the decodeToStruct function
+// Tests the decodeToStruct function.
 func TestDecodeToStruct(t *testing.T) {
 	t.Run("should be able to be decoded into Response", func(t *testing.T) {
-		dummyResponse := Response{
-			Services: []Service{
-				{
-					ServiceNumber: "15",
-					NextBus:       IncomingBusDetails{
-						DestinationCode:  "77009",
-						EstimatedArrival: "2017-06-05T14:46:27+08:00",
-					},
-					SubsequentBus: IncomingBusDetails{
-						DestinationCode:  "77009",
-						EstimatedArrival: "2017-06-05T14:57:09+08:00",
-					},
-				},
-			},
-		}
+		var dummyResponse api.Response
+		raw, _ := ioutil.ReadFile("../test_data/response.json")
+		json.Unmarshal(raw, &dummyResponse)
 
 		// Converting the Response struct to an io.ReadCloser
 		toBytes, _ := json.Marshal(dummyResponse) // convert to bytes
@@ -61,7 +51,7 @@ func TestDecodeToStruct(t *testing.T) {
 		readCloser := ioutil.NopCloser(byteReader) // wrapped with ioutil.NopCloser
 
 		// get the struct representation of readCloser
-		_, err := decodeToStruct(readCloser)
+		_, err := api.DecodeToStruct(readCloser)
 
 		if err != nil {
 			t.Errorf("not expecting error but got one: %q", err.Error())
@@ -72,7 +62,7 @@ func TestDecodeToStruct(t *testing.T) {
 		stringReader := strings.NewReader("hello world")
 		invalidReadCloser := ioutil.NopCloser(stringReader)
 
-		_, err := decodeToStruct(invalidReadCloser)
+		_, err := api.DecodeToStruct(invalidReadCloser)
 
 		if err == nil {
 			t.Errorf("expected an error but did not get one")

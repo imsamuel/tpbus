@@ -9,7 +9,7 @@ import (
 var appStore = store.Value
 
 // Handler for route /services/<bus-stop-location> | accepts ServiceNumber query param
-func GetServices(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+func GetServicesFromBusStop(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	// Extract the bus stop location provided from path parameter
 	busStopLocation := ps.ByName("busStopLocation")
 
@@ -24,8 +24,9 @@ func GetServices(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		}
 
 		w.WriteHeader(http.StatusNotFound)
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set(CONTENT_TYPE, APPLICATION_JSON)
 		w.Write(errorMsg)
+		return
 	}
 
 	/*
@@ -34,26 +35,27 @@ func GetServices(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	*/
 	serviceNumber := r.URL.Query().Get("ServiceNumber")
 	if isServiceNumberValid(serviceNumber) {
-		service := appStore.GetAService(busStopLocation, serviceNumber)
+		service := appStore.GetServiceFromOneBusStop(busStopLocation, serviceNumber)
 		marshalledService, err := getPrettyPrint(service)
 		if err != nil {
 			panic(err)
 		}
 
 		w.WriteHeader(http.StatusOK)
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set(CONTENT_TYPE, APPLICATION_JSON)
 		w.Write(marshalledService)
+		return
 	}
 
 	// Retrieve the timings of all bus services of specified bus stop.
-	services := appStore.GetAllServices(busStopLocation)
+	services := appStore.GetServicesFromOneBusStop(busStopLocation)
 	marshalledServices, err := getPrettyPrint(services)
 	if err != nil {
 		panic(err)
 	}
 
 	w.WriteHeader(http.StatusOK)
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set(CONTENT_TYPE, APPLICATION_JSON)
 	w.Write(marshalledServices)
 }
 

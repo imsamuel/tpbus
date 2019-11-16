@@ -32,14 +32,14 @@ var fakeService = getService()
 var fakeServices = getServices()
 
 
-// Tests the GetAService method on type Store.
-func TestGetAService(t *testing.T) {
+// Tests the GetServiceFromOneBusStop method on type Store.
+func TestGetServiceFromOneBusStop(t *testing.T) {
 	appStore := store.New()
 	appStore.WestGate = fakeServices
 
 	targetServiceNumber := "15"
 
-	got := appStore.GetAService("west-gate", targetServiceNumber)
+	got := appStore.GetServiceFromOneBusStop("west-gate", targetServiceNumber)
 	want := fakeService
 
 	if !cmp.Equal(got, want) {
@@ -47,22 +47,38 @@ func TestGetAService(t *testing.T) {
 	}
 }
 
-// Tests the GetAllServices method on type Store.
-func GetAllServices(t *testing.T) {
+// Tests the GetServicesFromOneBusStop method on type Store.
+func TestGetServicesFromOneBusStop(t *testing.T) {
 	appStore := store.New()
 	appStore.WestGate = fakeServices
 	want := fakeServices
-	got := appStore.GetAllServices("west-gate")
+	got := appStore.GetServicesFromOneBusStop("west-gate")
 	if !cmp.Equal(got, want) {
-		t.Errorf("services not retrieved: got %+v want %+v", got, want)
+		t.Errorf("services from %s not retrieved: got %+v want %+v","west-gate", got, want)
+	}
+}
+
+// Tests the GetServicesFromAllBusStops method on type Store.
+func TestGetServicesFromAllBusStops(t *testing.T) {
+	appStore := store.New()
+	appStore.WestGate = fakeServices
+	appStore.OppWestGate = fakeServices
+	appStore.MainGate = fakeServices
+	appStore.OppMainGate = fakeServices
+	appStore.EastGate = fakeServices
+	appStore.OppEastGate = fakeServices
+	got := *appStore
+	want := appStore.GetServicesAtAllBusStops()
+	if !cmp.Equal(got, want) {
+		t.Errorf("services from all bus stops not retrieved: got %+v want %+v", got, want)
 	}
 }
 
 // Tests the SetServices method on type Store.
-func SetServices(t *testing.T) {
+func TestSetServices(t *testing.T) {
 	appStore := store.New()
 	appStore.SetServices("west-gate", fakeServices)
-	got := appStore.GetAllServices("west-gate")
+	got := appStore.GetServicesFromOneBusStop("west-gate")
 	want := fakeServices
 	if !cmp.Equal(got, want) {
 		t.Errorf("services not set: got %+v want %+v", got, want)

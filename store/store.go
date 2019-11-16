@@ -15,7 +15,7 @@ var gates = constants.BusStopsAtGates
 func New() *Store { return &Store{} }
 
 // Gets the test_data of a single bus service at specified bus stop.
-func (s *Store) GetAService(busStopLocation string, serviceNumber string) models.Service {
+func (s *Store) GetServiceFromOneBusStop(busStopLocation string, serviceNumber string) models.Service {
 	var services models.Services
 
 	switch busStopLocation {
@@ -42,8 +42,8 @@ func (s *Store) GetAService(busStopLocation string, serviceNumber string) models
 	return models.Service{} // to satisfy the compulsory return at top scope
 }
 
-// Gets the test_data of the bus services at the specified bus stop.
-func (s *Store) GetAllServices(busStopLocation string) models.Services {
+// Gets the timings of the bus services at the specified bus stop.
+func (s *Store) GetServicesFromOneBusStop(busStopLocation string) models.Services {
 	var services models.Services
 
 	switch busStopLocation {
@@ -63,6 +63,9 @@ func (s *Store) GetAllServices(busStopLocation string) models.Services {
 
 	return services
 }
+
+// Gets the timings of the bus services at all bus stops.
+func (s *Store) GetServicesAtAllBusStops() Store { return *s }
 
 // Sets the specified Store field with the given test_data of bus services.
 func (s *Store) SetServices(busStopLocation string, services models.Services) {

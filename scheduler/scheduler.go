@@ -8,12 +8,26 @@ import (
 	"log"
 	"time"
 	"tpbus/api"
+	"tpbus/constants"
 	"tpbus/store"
-	"tpbus/util"
+	"tpbus/transform"
 )
 
 // Cutting down name space.
-var appStore = store.Store
+var appStore = store.Value
+
+// Details of the bus stops at Temasek Poly. (cutting down namespace)
+var gates = constants.BusStopsAtGates
+
+// Maps the bus stop code of bus stops to the bus stop's name.
+var busStopCodeToBusStopName = map[string]string{
+	gates.West.Code: gates.West.Name,
+	gates.OppWest.Code: gates.OppWest.Name,
+	gates.Main.Code: gates.Main.Name,
+	gates.OppMain.Code: gates.OppMain.Name,
+	gates.East.Code: gates.East.Name,
+	gates.OppEast.Code: gates.OppEast.Name,
+}
 
 /*
 Calls the BusArrival API every minute and stores the result in the app's
@@ -30,9 +44,9 @@ func CallAndStoreEveryMin(busStopCode string) {
 				*respStruct = api.Response{}
 			}
 
-			transformed := util.TransformAPIResponse(*respStruct)
+			transformed := transform.ResponseToServices(*respStruct)
 
-			busStopLocation := util.BusStopCodeToBusStopName[busStopCode]
+			busStopLocation := busStopCodeToBusStopName[busStopCode]
 			appStore.SetServices(busStopLocation, transformed)
 		}
 	}

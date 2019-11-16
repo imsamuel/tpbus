@@ -1,0 +1,135 @@
+[
+  {
+    "serviceNumber":"118",
+    "destinationCode": "65009",
+    "nextBus": {
+      "estimatedArrival": "2019-11-16T18:27:13+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-16T18:41:40+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-16T18:53:00+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    }
+  },
+  {
+    "serviceNumber":"129",
+    "destinationCode": "52499",
+    "nextBus": {
+      "estimatedArrival": "2019-11-16T18:34:56+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-16T18:47:35+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-16T19:02:35+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    }
+  },
+  {
+    "serviceNumber":"15",
+    "destinationCode": "77009",
+    "nextBus": {
+      "estimatedArrival": "2019-11-16T18:25:54+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-16T18:43:56+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-16T19:00:51+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    }
+  },
+  {
+    "serviceNumber":"23",
+    "destinationCode": "75009",
+    "nextBus": {
+      "estimatedArrival": "2019-11-16T18:29:28+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-16T18:40:24+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-16T18:52:24+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    }
+  },
+  {
+    "serviceNumber":"518",
+    "destinationCode": "77009",
+    "nextBus": {
+      "estimatedArrival": "2019-11-16T18:22:19+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-16T18:34:57+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-16T18:58:39+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    }
+  },
+  {
+    "serviceNumber":"69",
+    "destinationCode": "75009",
+    "nextBus": {
+      "estimatedArrival": "2019-11-16T18:26:26+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-16T18:42:21+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-16T18:59:06+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    }
+  },
+  {
+    "serviceNumber":"8",
+    "destinationCode": "52009",
+    "nextBus": {
+      "estimatedArrival": "2019-11-16T18:28:04+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus2": {
+      "estimatedArrival": "2019-11-16T18:42:27+08:00",
+      "type": "double deck",
+      "isWheelChairAccessible": true
+    },
+    "nextBus3": {
+      "estimatedArrival": "2019-11-16T18:51:07+08:00",
+      "type": "single deck",
+      "isWheelChairAccessible": true
+    }
+  }
+]

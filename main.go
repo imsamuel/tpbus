@@ -26,7 +26,9 @@ func main() {
 	go callAndStoreEveryMin(gates.OppEast.Code)
 
 	router := httprouter.New()
-	router.GET("/services", handlers.GetAllServices)
-	router.GET("/services/:busStopLocation", handlers.GetServices)
+	router.GET("/services", handlers.GetServicesFromAllBusStops)
+	router.GET("/services/:busStopLocation", handlers.GetServicesFromBusStop)
+	router.NotFound = http.HandlerFunc(handlers.HandleNotFound)
+
 	http.ListenAndServe(":8080", router)
 }
