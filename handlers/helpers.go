@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
+	"net/http"
 	"tpbus/constants"
 )
 
@@ -69,4 +70,19 @@ func isServiceNumberValid(serviceNumber string) bool {
 	}
 
 	return false
+}
+
+// Writes a JSON-encoded message indicating an invalid request as part of a
+// HTTP response.
+func WriteNotFoundMessage(w http.ResponseWriter, path string) {
+	notFoundMessage, _ := getNotFoundMessage(path)
+	w.WriteHeader(http.StatusNotFound)
+	w.Header().Set(CONTENT_TYPE, APPLICATION_JSON)
+	w.Write(notFoundMessage)
+}
+
+// Takes a http.ResponseWriter and sets its Access-Control-Allow-Origin header
+// to "all". Allows server to respond to cross-origin requests.
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 }

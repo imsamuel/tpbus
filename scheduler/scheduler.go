@@ -41,13 +41,12 @@ func CallAndStoreEveryMin(busStopCode string) {
 			respStruct, err := api.GetBusServicesFromAPI(busStopCode) // GetBusServicesFromAPI SHOULD NOT BE RETURNING A NIL POINTER
 			if err != nil {
 				log.Printf("error occured in GetBusServicesFromAPI: %v", err.Error())
-				*respStruct = api.Response{}
 			}
 
-			transformed := transform.ResponseToServices(*respStruct)
+			services := transform.ResponseToServices(respStruct)
 
 			busStopLocation := busStopCodeToBusStopName[busStopCode]
-			appStore.SetServices(busStopLocation, transformed)
+			appStore.SetServices(busStopLocation, services)
 		}
 	}
 }

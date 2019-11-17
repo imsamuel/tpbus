@@ -55,16 +55,15 @@ func MakeRequest(r *http.Request) (io.ReadCloser, error) {
 
 /*
 Decodes a response body into a Response instance and returns it.
-*If an error is produced by (*Decoder).Decode, return a nil
- pointer to Response and the error, else return the set
- pointer to Response and a nil error.
+*If an error is produced by (*Decoder).Decode, return an
+ empty instance of Response and the error.
 */
-func DecodeToStruct(rc io.ReadCloser) (*Response, error) {
-	r := &Response{}
+func DecodeToStruct(rc io.ReadCloser) (Response, error) {
+	r := Response{}
 
-	err := json.NewDecoder(rc).Decode(r)
+	err := json.NewDecoder(rc).Decode(&r)
 	if err != nil {
-		return nil, err
+		return r, err
 	}
 
 	return r, nil
@@ -74,14 +73,14 @@ func DecodeToStruct(rc io.ReadCloser) (*Response, error) {
 Makes a call to the BusArrival API, decodes the response body into an instance
 of Response and returns a pointer to the instance.
 */
-func GetBusServicesFromAPI(busStopCode string) (*Response, error) {
+func GetBusServicesFromAPI(busStopCode string) (Response, error) {
 	// Error is ignored because err will never be produced, values are hardcoded.
 	request, _ := NewRequest(busStopCode)
 
 	// If issue occurs during API call, just return a nil pointer with error.
 	respBody, err := MakeRequest(request)
 	if err != nil {
-		return nil, err
+		return Response{}, err
 	}
 
 	/*

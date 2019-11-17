@@ -2,15 +2,10 @@ package handlers
 
 import "net/http"
 
-// Handler for resource that cannot be found
+// Handler for invalid route
 func HandleNotFound(w http.ResponseWriter, r *http.Request) {
-	notFoundMessage, err := getNotFoundMessage(r.URL.Path)
-	if err != nil {
-		panic(err)
-	}
+	enableCors(&w)
 
-	w.WriteHeader(http.StatusNotFound)
-	w.Header().Set(CONTENT_TYPE, APPLICATION_JSON)
-	w.Write(notFoundMessage)
+	WriteNotFoundMessage(w, r.URL.Path)
 }
 

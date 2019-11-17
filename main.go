@@ -28,6 +28,7 @@ func main() {
 	router := httprouter.New()
 	router.GET("/services", handlers.GetServicesFromAllBusStops)
 	router.GET("/services/:busStopLocation", handlers.GetServicesFromBusStop)
+	router.GET("/services/:busStopLocation/:serviceNumber", handlers.GetServiceFromBusStop)
 	router.NotFound = http.HandlerFunc(handlers.HandleNotFound)
 
 	http.ListenAndServe(":8080", router)
