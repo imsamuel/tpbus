@@ -11,6 +11,7 @@ import (
 
 var gates = constants.BusStopsAtGates
 var callAndStoreEveryMin = scheduler.CallAndStoreEveryMin
+var port = os.Getenv("PORT")
 
 func main() {
 	// exit early if account key has not been set.
@@ -31,5 +32,5 @@ func main() {
 	router.GET("/services/:busStopLocation/:serviceNumber", handlers.GetServiceFromBusStop)
 	router.NotFound = http.HandlerFunc(handlers.HandleNotFound)
 
-	http.ListenAndServe(":80", router)
+	http.ListenAndServe(":" + port, router)
 }
