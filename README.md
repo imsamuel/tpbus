@@ -1,4 +1,4 @@
-# A REST API for the timings of the bus services at Temasek Polytechnic
+# A REST API for the timings of the bus services at Temasek Polytechnic *EDIT: CORS enabled!
 
 ## Preface
 
