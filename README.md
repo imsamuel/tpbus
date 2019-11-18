@@ -5,7 +5,7 @@
 ### Details
 |||
 |-------------|----------------------------------------------------------------------------------------------------------------------------------|
-| URL         | https://tpbus.sg |
+| URL         | https://tpbus.herokuapp.com |
 | Description | Returns real-time Bus Arrival information of Bus Services at Temasek Polytechnic, including Est. Arrival Time, Destination Code. |
 | Update Freq | 1 minute |
 
