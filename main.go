@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"os"
@@ -11,12 +12,18 @@ import (
 
 var gates = constants.BusStopsAtGates
 var callAndStoreEveryMin = scheduler.CallAndStoreEveryMin
-var port = os.Getenv("PORT")
+var port string
 
 func main() {
 	// exit early if account key has not been set.
 	if os.Getenv("ACCOUNT_KEY") == "" {
 		panic("account key has to be set to access the bus arrival API")
+	}
+
+	if os.Getenv("PORT") != "" {
+		port = os.Getenv("PORT")
+	} else {
+		port = "8080"
 	}
 
 	go callAndStoreEveryMin(gates.West.Code)
@@ -27,10 +34,10 @@ func main() {
 	go callAndStoreEveryMin(gates.OppEast.Code)
 
 	router := httprouter.New()
+	router.GET("/", handlers.Index)
 	router.GET("/services", handlers.GetServicesFromAllBusStops)
 	router.GET("/services/:busStopLocation", handlers.GetServicesFromBusStop)
 	router.GET("/services/:busStopLocation/:serviceNumber", handlers.GetServiceFromBusStop)
-	router.NotFound = http.HandlerFunc(handlers.HandleNotFound)
 
-	http.ListenAndServe(":" + port, router)
+	http.ListenAndServe(fmt.Sprintf(":%s", port), router)
 }

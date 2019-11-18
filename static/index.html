@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tpbus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <style>
+        section {
+            margin-bottom: 30px;
+        }
+
+        .item-header {
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <section class="hero is-light">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">
+                    A simple API for bus service timings at Temasek Polytechnic
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container has-text-centered">
+            <span class="is-size-4">
+                Read the full documentation @ 
+                    <a
+                        href="https://github.com/samuelyapwoonpin/tpbus/blob/master/README.md"
+                        target="_blank"
+                    >
+                        https://github.com/samuelyapwoonpin/tpbus/blob/master/README.md
+                    </a>
+            </span> 
+        </div>
+    </section>
+    <section>
+        <div class="container has-text-centered">
+            <div class="list">
+                <div class="list-item">
+                    <div class="is-size-5 item-header">Get timings of bus services at all bus stops</div>
+                    <div class="is-size-6">
+                        Definition: 
+                        <code>/services</code>
+                    </div>
+                    <div class="is-size-6">
+                        Example: 
+                        <a 
+                            href="https://tpbus.herokuapp.com/services"
+                            target="_blank"
+                        >
+                            tpbus.herokuapp.com/services
+                        </a> 
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="is-size-5 item-header">Get timings of bus services at specified bus stop</div>
+                    <div class="is-size-6">
+                        Definition: 
+                        <code>/services/&lt;busStopLocation&gt;</code>
+                    </div>
+                    <div class="is-size-6">
+                        Example: 
+                        <a 
+                            href="https://tpbus.herokuapp.com/services/west-gate"
+                            target="_blank"
+                        >
+                        tpbus.herokuapp.com/services/west-gate
+                        </a> 
+                        (Gets the timings of the bus services at TP's west gate)
+                    </div>
+                </div>    
+                <div class="list-item">
+                    <div class="is-size-5 item-header">Get timings of specified bus service at specified bus stop</div>
+                    <div class="is-size-6">
+                        Definition: 
+                        <code>/services/&lt;busStopLocation&gt;/&lt;serviceNumber&gt;</code>
+                    </div>
+                    <div class="is-size-6">
+                        Example: 
+                        <a 
+                            href="https://tpbus.herokuapp.com/services/main-gate/23"
+                            target="_blank"
+                        >
+                        tpbus.herokuapp.com/services/main-gate/23
+                        </a> 
+                        (Gets the timings of the bus 23 at TP's main gate)
+                    </div>
+                </div>       
+            </div>
+        <div>
+    </section>
+</body>
+</html>
