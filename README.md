@@ -237,7 +237,7 @@ Where `busStopLocation` can be one of these 6 values:
 
 **Definition**
 
-`GET /services/<busStopCode>/<serviceNumber>
+`GET /services/<busStopCode>/<serviceNumber>`
 
 Where `busStopLocation` can be one of these six values:
 - west-gate
