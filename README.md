@@ -237,7 +237,7 @@ Where `busStopLocation` can be one of these 6 values:
 
 **Definition**
 
-`GET /services/<busStopCode>?ServiceNumber=<serviceNumber>`
+`GET /services/<busStopCode>/<serviceNumber>
 
 Where `busStopLocation` can be one of these six values:
 - west-gate
@@ -257,7 +257,7 @@ and `serviceNumber` can be one of these eight values:
 - 129
 - 518
 
-**Response** (Example request to `/services/east-gate?ServiceNumber=118`)
+**Response** (Example request to `/services/east-gate/118`)
 
 - `200 OK` on success
 ```json
