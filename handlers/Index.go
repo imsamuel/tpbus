@@ -7,10 +7,25 @@ import (
 	"net/http"
 )
 
-func Index(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	t, err := template.ParseFiles("./static/index.html")
-	if err != nil {
-		log.Print(err)
+var tpl *template.Template
+
+func getFileNamesWithPrefix(fileNames ...string) []string {
+	fileNamesWithPrefix := make([]string, 0, len(fileNames))
+	prefix := "./static/"
+	for _, fileName := range fileNames {
+		fileNamesWithPrefix = append(fileNamesWithPrefix, prefix + fileName)
 	}
-	t.Execute(w, nil)
+	return fileNamesWithPrefix
+}
+
+func init() {
+	prefixedFileNames := getFileNamesWithPrefix("index.html")
+	tpl = template.Must(template.ParseFiles(prefixedFileNames...))
+}
+
+func Index(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	err := tpl.ExecuteTemplate(w, "index.html", nil)
+	if err != nil {
+		log.Fatalln(err)
+	}
 }

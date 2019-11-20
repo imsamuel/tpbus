@@ -14,18 +14,21 @@ var gates = constants.BusStopsAtGates
 var callAndStoreEveryMin = scheduler.CallAndStoreEveryMin
 var port string
 
-func main() {
+func init() {
 	// exit early if account key has not been set.
 	if os.Getenv("ACCOUNT_KEY") == "" {
 		panic("account key has to be set to access the bus arrival API")
 	}
 
+	// Default to port 8080 if in development.
 	if os.Getenv("PORT") != "" {
 		port = os.Getenv("PORT")
 	} else {
 		port = "8080"
 	}
+}
 
+func main() {
 	go callAndStoreEveryMin(gates.West.Code)
 	go callAndStoreEveryMin(gates.OppWest.Code)
 	go callAndStoreEveryMin(gates.Main.Code)
